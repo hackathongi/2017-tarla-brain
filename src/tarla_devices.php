@@ -1,6 +1,6 @@
 <?php
 return [
-	'bombeta' => 'http://rasp:80/bombeta',
-	'test' => 'http://localhost:8888/tarla/test'
+	'bombeta_http' => 'http://raspberry:80/bombeta',
+	'bombeta_socket' => 'tcp://localhost:5000'
 ];
 ?>

@@ -14,40 +14,53 @@ $app->get('/devices/{device}/cmds/{action}', function ($request, $response, $arg
 	return $errorResponse;
     }
 
-    //Fem la crida HTTP al device
-    $deviceURL = $devices[$device] . '/cmds/' . $request->getAttribute("action") . '?' . $request->getUri()->getQuery();
+    $deviceURL = $devices[$device];
+
+    if(substr($deviceURL, 0, 7) === "http://"){
+
+        //Fem la crida HTTP al device
+        $deviceHTTPURL = $deviceURL . '/cmds/' . $request->getAttribute("action") . '?' . $request->getUri()->getQuery();
 
  
-    $deviceResponseBody = @file_get_contents($deviceURL);
+        $deviceResponseBody = @file_get_contents($deviceHTTPURL);
     
-    if($http_response_header === NULL){
-        $deviceStatusCode = 404;
-        $deviceResponseBody = "No s'ha trobat la URL '" . $deviceURL . "'";
+        if($http_response_header === NULL){
+            $deviceStatusCode = 404;
+            $deviceResponseBody = "No s'ha trobat la URL '" . $deviceHTTPURL . "'";
+        }else{
+            $deviceStatusCode = (int)explode(' ', $http_response_header[0])[1];
+        }
+
+        //Retornem HTTP StatusCode i Response original
+        $deviceResponse = $response->withStatus($deviceStatusCode);
+        $deviceResponse->getBody()->write($deviceResponseBody);
+
+        return $deviceResponse;
+    }else if(substr($deviceURL, 0, 6) === "tcp://" ){
+        
+        //Fem la crida socket TCP al device
+        $socket = stream_socket_client($deviceURL, $errno, $errorMessage);
+
+	$deviceStatusCode = 200;
+
+        if($socket === false){
+            $deviceStatusCode = 404;
+            $deviceResponseBody = "No es possible connectar al socket '" . $deviceURL . "'";
+        }else{
+            fwrite($socket, '/cmds/' . $request->getAttribute("action") . '?' . $request->getUri()->getQuery() . PHP_EOL);
+            $deviceResponseBody = stream_get_line($socket, 2048, "\n");
+            fclose($socket);
+        }
+
+	//Retornem HTTP StatusCode i Response
+        $deviceResponse = $response->withStatus($deviceStatusCode);
+        $deviceResponse->getBody()->write($deviceResponseBody);
+
+        return $deviceResponse;
     }else{
-        $deviceStatusCode = (int)explode(' ', $http_response_header[0])[1];
+        $errorResponse = $response->withStatus(400);
+        $errorResponse->getBody()->write("Prefix de URL no reconegut '" . $deviceURL . "'");
+        return $errorResponse;
     }
-
-    //Retornem HTTP StatusCode i Response original
-    $deviceResponse = $response->withStatus($deviceStatusCode);
-    $deviceResponse->getBody()->write($deviceResponseBody);
-
-    return $deviceResponse;
 });
-
-/*
-// Testing HTTP 200 responses
-$app->get('/test/echo/[{string}]', function ($request, $response, $args) {
-    $response->getBody()->write($args["string"]);
-
-    return $response;
-});
-
-// Testing HTTP 400 responses
-$app->get('/test/error', function ($request, $response, $args) {
-    $errorResponse = $response->withStatus(400);
-    $errorResponse->getBody()->write("error 400");
-    return $errorResponse;
-});
-*/
-
 
