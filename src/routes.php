@@ -3,10 +3,8 @@
 
 // *** DEVICE CALL ***
 $app->get('/devices/{device}/cmds/{action}', function ($request, $response, $args) {
-    $devices = require __DIR__ . '/../src/jarvis_devices.php';
+    $devices = require __DIR__ . '/../src/tarla_devices.php';
 
-	//print_r($request);
-	//return "test";
     $device = $request->getAttribute("device");
 
     //Comprovem que el device està configurat
@@ -36,6 +34,7 @@ $app->get('/devices/{device}/cmds/{action}', function ($request, $response, $arg
     return $deviceResponse;
 });
 
+/*
 // Testing HTTP 200 responses
 $app->get('/test/echo/[{string}]', function ($request, $response, $args) {
     $response->getBody()->write($args["string"]);
@@ -49,5 +48,6 @@ $app->get('/test/error', function ($request, $response, $args) {
     $errorResponse->getBody()->write("error 400");
     return $errorResponse;
 });
+*/
 
 
