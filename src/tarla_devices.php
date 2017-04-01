@@ -1,7 +1,7 @@
 <?php
 return [
 	'catapult' => [
-        '_url' => 'http://192.168.2.21',
+        '_url' => 'http://192.168.2.100',
         'description' => 'A catapult to kill intruders.',
         'actions' => [
             'shot' => [
@@ -12,8 +12,22 @@ return [
             ]
         ]
     ],
+
+'bombeta' => [
+        '_url' => 'http://192.168.2.101',
+        'description' => 'Llum de la casa',
+        'actions' => [
+            'on' => [
+                'description' => 'Say a text using text-to-speech synthesis',
+                'parameters' => [
+                    'p1' => 'on / off'
+                ]
+            ]
+        ]
+    ],
+	
 	'watering' => [
-        '_url' => 'tcp://node_ip:5000',
+        '_url' => 'http://192.168.2.102',
         'description' => 'Watering for plant maintenance.',
         'actions' => [
             'on' => [
@@ -28,7 +42,7 @@ return [
         ]
     ],
 	'timeserver' => [
-        '_url' => 'http://192.168.2.17:5001',
+        '_url' => 'http://192.168.2.103',
         'description' => 'Gives the current time',
         'actions' => [
             'formatted' => [
@@ -43,7 +57,7 @@ return [
         ]
     ],
 	'camera' => [
-        '_url' => 'http://192.168.4.???:5001',
+        '_url' => 'http://192.168.2.104',
         'description' => 'Surveillance camera',
         'actions' => [
             'on' => [
@@ -65,7 +79,7 @@ return [
     ],
 
        'test' => [
-        '_url' => 'http://192.168.2.5',
+        '_url' => 'http://192.168.2.105',
         'description' => 'Arduino socket library test',
         'actions' => [
             'on' => [
@@ -86,21 +100,8 @@ return [
         ]
     ],
 
-        'bombeta' => [
-        '_url' => 'http://192.168.2.23',
-        'description' => 'Llum de la casa',
-        'actions' => [
-            'on' => [
-                'description' => 'Say a text using text-to-speech synthesis',
-                'parameters' => [
-                    'p1' => 'on / off'
-                ]
-            ]
-        ]
-    ],
-
 	'announcer' => [
-        '_url' => 'http://192.168.2.17:5002',
+        '_url' => 'http://192.168.2.106',
         'description' => 'Announce things to people in the house',
         'actions' => [
             'say' => [
