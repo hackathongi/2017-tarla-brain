@@ -114,6 +114,16 @@ return [
                 ]
             ]
         ]
+    ],
+
+'facial' => [
+        '_url' => 'http://192.168.2.107',
+        'description' => 'Facial recognition',
+        'actions' => [
+            'on' => [
+                'description' => 'Start the facial recognition process.'
+            ]
+        ]
     ]
 ]
 ?>
