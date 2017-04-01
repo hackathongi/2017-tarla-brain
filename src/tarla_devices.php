@@ -42,7 +42,7 @@ return [
         ]
     ],
 	'timeserver' => [
-        '_url' => 'http://192.168.2.103',
+        '_url' => 'http://192.168.2.104:5001',
         'description' => 'Gives the current time',
         'actions' => [
             'formatted' => [
@@ -101,7 +101,7 @@ return [
     ],
 
 	'announcer' => [
-        '_url' => 'http://192.168.2.106',
+        '_url' => 'http://192.168.2.104:5002',
         'description' => 'Announce things to people in the house',
         'actions' => [
             'say' => [
@@ -111,6 +111,20 @@ return [
                     'voice' => 'Change voice/langauge. Default: spanish',
                     'volume' => 'Change volume of sound. Default: 100',
                     'speed' => 'Set speed, in words/minute. Default: 175'
+                ]
+            ]
+        ]
+    ],
+
+	'sampler' => [
+        '_url' => 'http://192.168.2.104:5003',
+        'description' => 'Play samples in the house',
+        'actions' => [
+            'play' => [
+                'description' => 'Play a sample',
+                'parameters' => [
+                    'file' => 'Which sample to play',
+                    'volume' => 'Change volume of sound. In percent. Default: 100',
                 ]
             ]
         ]
