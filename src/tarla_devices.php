@@ -1,20 +1,22 @@
 <?php
 return [
-	'pump_http' => [
-        '_url' => 'http://raspberry:80/bombeta',
-        'description' => 'A pump for water',
+	'catapult' => [
+        '_url' => 'http://raspberry:80/todo',
+        'description' => 'A catapult to kill intruders.',
         'actions' => [
-            'on' => 'Turn the pump on',
-            'off' => 'Turn the pump off',
+            'shot' => 'Shot the catapult',
         ],
-        'parameters' => [],
+        'parameters' => [
+		'sec' => 'Delay until catapult shots'
+	],
     ],
-	'pump_socket' => [
-        '_url' => 'tcp://localhost:5000',
-        'description' => 'A pump for water (using TCP socket)',
+	'watering' => [
+        '_url' => 'tcp://node_ip:5000',
+        'description' => 'Watering for plant maintenance.',
         'actions' => [
-            'on' => 'Turn the pump on',
-            'off' => 'Turn the pump off',
+            'on' => 'Turn on',
+            'off' => 'Turn off',
+	    'status' => 'Will return the humidity and temperature status'
         ],
         'parameters' => [],
     ],
@@ -27,6 +29,19 @@ return [
         ],
         'parameters' => [
             'format' => 'A formatting string for strftime(), see http://strftime.org',
+        ],
+    ],
+	'camera' => [
+        '_url' => 'http://192.168.4.???:5001',
+        'description' => 'Surveillance camera',
+        'actions' => [
+            'on' => 'Turn on',
+            'off' => 'Turn off',
+	    'status' => 'Whether it is on or off.',
+	    'pic' => 'Return last n pictures (1 by default)',
+        ],
+        'parameters' => [
+            'num' => 'For the pic cmd, the number of pictures to be returned (1 if not set)'
         ],
     ],
 ]
