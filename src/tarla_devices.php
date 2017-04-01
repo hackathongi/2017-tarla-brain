@@ -63,6 +63,42 @@ return [
             ]
         ]
     ],
+
+       'test' => [
+        '_url' => 'http://192.168.2.5',
+        'description' => 'Arduino socket library test',
+        'actions' => [
+            'on' => [
+                'description' => 'Turn on'
+            ],
+            'off' => [
+                'description' => 'Turn off'
+            ],
+            'status' => [
+                'description' => 'Whether it is on or off.'
+            ],
+            'pic' => [
+                'description' => 'Return last n pictures (1 by default)',
+                'parameters' => [
+                    'num' => 'For the pic cmd, the number of pictures to be returned (1 if not set)'
+                ]
+            ]
+        ]
+    ],
+
+        'bombeta' => [
+        '_url' => 'http://192.168.2.23',
+        'description' => 'Llum de la casa',
+        'actions' => [
+            'on' => [
+                'description' => 'Say a text using text-to-speech synthesis',
+                'parameters' => [
+                    'p1' => 'on / off'
+                ]
+            ]
+        ]
+    ],
+
 	'announcer' => [
         '_url' => 'http://192.168.2.17:5002',
         'description' => 'Announce things to people in the house',
