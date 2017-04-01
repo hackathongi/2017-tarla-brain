@@ -18,11 +18,9 @@ return [
         'description' => 'Llum de la casa',
         'actions' => [
             'on' => [
-                'description' => 'Say a text using text-to-speech synthesis',
-                'parameters' => [
-                    'p1' => 'on / off'
-                ]
-            ]
+                'description' => 'Switch on the light.',
+            ],
+	'off' => ['description' => 'Switch off the light.']
         ]
     ],
 	

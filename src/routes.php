@@ -31,6 +31,8 @@ $app->get('/devices/{device}/cmds/{action}', function ($request, $response, $arg
             $deviceStatusCode = (int)explode(' ', $http_response_header[0])[1];
         }
 
+	if($deviceStatusCode==0) $deviceStatusCode=500;
+
         //Retornem HTTP StatusCode i Response original
         $deviceResponse = $response->withStatus($deviceStatusCode);
         $deviceResponse->getBody()->write($deviceResponseBody);
