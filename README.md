@@ -12,7 +12,6 @@ Els dispositius es defineixen al fitxer src/tarla_devices.php amb el format "nom
 * URL amb prefix http:// -  El dispositiu té un servidor web que escolta comandes via protocol http
 * URL amb prefix tcp://  - El dispositiu té un socket escoltant comandes via protocol tcp
 
-
 ## Mètode Principal devices/ ##
 
 El mètode principal de TARLÀ es: devices/{nom_device}/cmds/{acció}?param1=val1&param2=val2...
@@ -22,6 +21,11 @@ Quan rep una crida HTTP GET, la transmet al dispositiu fent servir la URL config
 * Devices HTTP: la informació de la comanda es passa per la URL (query string).
 * Devices socket TCP: Un cop establida la conexió, TARLÀ enviarà la comanda en forma de query string.
 
+## List available devices
+
+A description of the available devices is available on `/devices`.
+
+For example, go to http://localhost:8888/devices
 
 ## Instalació i proves ##
 
