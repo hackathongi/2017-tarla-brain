@@ -21,7 +21,7 @@ return [
         'parameters' => [],
     ],
 	'timeserver' => [
-        '_url' => 'http://192.168.4.112:5001',
+        '_url' => 'http://192.168.2.17:5001',
         'description' => 'Gives the current time',
         'actions' => [
             'formatted' => 'Returns time as a formatted string. Example: 2017-04-01T10:46:18',
@@ -45,13 +45,16 @@ return [
         ],
     ],
 	'announcer' => [
-        '_url' => 'http://192.168.4.112:5002',
+        '_url' => 'http://192.168.2.17:5002',
         'description' => 'Announce things to people in the house',
         'actions' => [
             'say' => 'Say a text using text-to-speech synthesis',
         ],
         'parameters' => [
             'what' => 'What to say',
+            'voice' => 'Change voice/langauge. Default: spanish',
+            'volume' => 'Change volume of sound. Default: 100',
+            'speed' => 'Set speed, in words/minute. Default: 175',
         ],
     ],
 ]
