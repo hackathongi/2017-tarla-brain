@@ -1,7 +1,7 @@
 <?php
 return [
 	'catapult' => [
-        '_url' => 'http://192.168.4.221',
+        '_url' => 'http://192.168.2.21',
         'description' => 'A catapult to kill intruders.',
         'actions' => [
             'shot' => [
