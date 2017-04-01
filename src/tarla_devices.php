@@ -1,7 +1,7 @@
 <?php
 return [
 	'catapult' => [
-        '_url' => 'http://raspberry:80/todo',
+        '_url' => 'http://192.168.4.221',
         'description' => 'A catapult to kill intruders.',
         'actions' => [
             'shot' => [
