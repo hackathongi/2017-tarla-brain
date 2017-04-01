@@ -44,5 +44,15 @@ return [
             'num' => 'For the pic cmd, the number of pictures to be returned (1 if not set)'
         ],
     ],
+	'announcer' => [
+        '_url' => 'http://192.168.4.112:5002',
+        'description' => 'Announce things to people in the house',
+        'actions' => [
+            'say' => 'Say a text using text-to-speech synthesis',
+        ],
+        'parameters' => [
+            'what' => 'What to say',
+        ],
+    ],
 ]
 ?>
