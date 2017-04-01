@@ -5,7 +5,7 @@
 La API central està creada amb el micro-framework PHP open source [Slim](https://www.slimframework.com/)
 Aquest "cervell" central, escola comandes via HTTP, i les redirigeix als drivers.
 
-Els "drivers" (o dispositius externs), son responsables de rebre comandes a través del cervell central i actuar en consonància. Per exemple, el dispositiu "bombeta" ha de ser capaç d'encendre un llum quan rebi la comanda "on"
+Els "drivers" (o dispositius externs), son responsables de rebre comandes a través del cervell central i actuar en consonància. Per exemple, el dispositiu "pump" (una bombeta) ha de ser capaç d'encendre un llum quan rebi la comanda "on"
 
 Els dispositius es defineixen al fitxer src/tarla_devices.php amb el format "nom"=>"url". Aquesta URL especifica la forma de comunicació que suporta, la cual pot ser de 2 tipus:
 
@@ -33,8 +33,8 @@ Un cop fet checkout d'aquest repositori, s'ha de fer accessible el directori /pu
 
 Per exemple, si fem el directori /public accessible a través de http://localhost:888/tarla , podem probar el dispositius d'exemple:
 
-* "bombeta_http": Accedint des de un browser a: http://localhost:8888/tarla/devices/bombeta_http/cmds/on
-* "bombeta_socket": Accedit des del un browser a: http://localhost:8888/tarla/devices/bombeta_socket/cmds/on 
+* "pump_http": Accedint des de un browser a: http://localhost:8888/tarla/devices/pump_http/cmds/on
+* "pump_socket": Accedit des del un browser a: http://localhost:8888/tarla/devices/pump_socket/cmds/on 
 
 ### Simular dispositius ###
 
