@@ -57,7 +57,7 @@ return [
         ]
     ],
 	'camera' => [
-        '_url' => 'http://192.168.2.104',
+        '_url' => 'http://192.168.2.106',
         'description' => 'Surveillance camera',
         'actions' => [
             'on' => [
