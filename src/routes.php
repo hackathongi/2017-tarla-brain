@@ -79,3 +79,18 @@ $app->get('/devices', function ($request, $response, $args) {
 
 	return $discoveryResponse;
 });
+// DEVICE DISCOVERY
+$app->get('/devices2', function ($request, $response, $args) {
+    $devices = require __DIR__ . '/../src/tarla_devices.php';
+
+    // Hide private data
+    $info = [];
+    foreach ($devices as $deviceName => $deviceData) {
+        unset($deviceData['_url']);
+        $info[$deviceName] = $deviceData;
+    }
+
+    $discoveryResponse = $response->withJson($info, 200, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES);
+
+	return $discoveryResponse;
+});
