@@ -36,6 +36,18 @@ Per exemple, si fem el directori /public accessible a través de http://localhos
 * "pump_http": Accedint des de un browser a: http://localhost:8888/tarla/devices/pump_http/cmds/on
 * "pump_socket": Accedit des del un browser a: http://localhost:8888/tarla/devices/pump_socket/cmds/on 
 
+### Docker container ###
+
+Per facilitar l'execució del tarla brain hem creat un contenidor docker. 
+
+Si tens docker instal.lat a la máquina, es pot aixecar el contenidor desde l'arrel del repositori tarla-brain:
+
+```bash
+$ docker-compose up
+```
+
+Un cop aixecat el contenidor, es pot accedir via http://localhost/info.php/devices
+
 ### Simular dispositius ###
 
 *Simular dispositiu HTTP* 

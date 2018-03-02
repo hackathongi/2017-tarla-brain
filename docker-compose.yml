@@ -1,0 +1,11 @@
+version: '2'
+services:
+ 
+  tarlabrain:
+    image: tutum/apache-php:latest
+    volumes:
+      - ./:/var/www/html
+      - ./apache_virtualhost.conf:/etc/apache2/sites-available/000-default.conf
+    ports:
+      - "80:80"
+ 
